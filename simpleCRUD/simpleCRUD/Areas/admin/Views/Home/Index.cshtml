@@ -1,0 +1,63 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <a  asp-area="admin" asp-controller="Employee" asp-action="Create" class="btn btn-primary my-5">Employee Add +</a>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Employee Tables</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 0; }
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.Age</td>
+                                <td>@item.Email</td>
+                                <td>@item.Position.Name</td>
+                                <td>
+                                     <a asp-area="admin" asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-success">Update</a>
+                                     <a asp-area="admin" asp-controller="Employee" asp-action="delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+<!-- End of Main Content -->
+
+
+
+
+
